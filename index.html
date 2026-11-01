@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planning Stijn</title>
+<style>
+  :root{
+    --stijn:#dbeafe; --stijn-border:#2563eb; --stijn-text:#1e3a8a; --stijn-afwijking:#93c5fd;
+    --marlies:#fce7f3; --marlies-border:#db2777; --marlies-text:#831843; --marlies-afwijking:#f9a8d4;
+    --mk:#dcfce7; --mk-border:#16a34a; --mk-text:#14532d; --mk-afwijking:#86efac;
+    --vrij:#fffbeb; --vrij-border:#f59e0b; --vrij-text:#92400e;
+    --navy:#0f172a; --navy2:#111827; --purple:#7c3aed;
+    --bg:#f8fafc; --card:#ffffff; --text:#1e293b; --muted:#64748b; --border:#e2e8f0;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);}
+
+  #app{display:block;max-width:1040px;margin:0 auto;padding:1.25rem 1rem 4rem;}
+  header.top{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;}
+  header.top h1{font-size:1.3rem;margin:0;}
+  header.top .who{font-size:.85rem;color:var(--muted);margin-left:auto;}
+
+  /* lagen / legende */
+  .lanes{display:flex;flex-wrap:wrap;gap:.5rem .9rem;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:.8rem 1rem;margin-bottom:1rem;font-size:.82rem;align-items:center;}
+  .lanes label{display:flex;align-items:center;gap:.4rem;cursor:pointer;user-select:none;padding:.25rem .55rem;border-radius:8px;border:1px solid var(--border);background:#fff;}
+  .lanes label.off{opacity:.45;}
+  .lanes input{margin:0;}
+  .swatch{width:14px;height:14px;border-radius:4px;flex:none;border:1px solid rgba(0,0,0,.08);}
+  .swatch.half{background:linear-gradient(90deg,var(--mk) 50%,#fff 50%);}
+  .lanes .sep{width:1px;height:1.4rem;background:var(--border);}
+  .lanes .hint{color:var(--muted);font-size:.75rem;}
+
+  /* navigatie */
+  .navbar{display:flex;align-items:center;gap:.4rem;background:var(--navy);color:#fff;border-radius:12px;padding:.55rem .7rem;margin-bottom:1rem;position:sticky;top:.5rem;z-index:5;box-shadow:0 6px 20px rgba(15,23,42,.25);}
+  .navbar .navlabel{flex:1;text-align:center;font-weight:800;font-size:1.05rem;letter-spacing:.01em;}
+  .navbar .navbtn{background:rgba(255,255,255,.12);border:none;color:#fff;width:2.1rem;height:2.1rem;border-radius:8px;font-size:1.05rem;font-weight:700;cursor:pointer;line-height:1;}
+  .navbar .navbtn:hover{background:rgba(255,255,255,.22);}
+  .navbar .navbtn:disabled{opacity:.3;cursor:not-allowed;}
+  .navbar .navtoday{background:var(--purple);border:none;color:#fff;font-weight:700;font-size:.8rem;padding:.5rem .8rem;border-radius:8px;cursor:pointer;white-space:nowrap;}
+
+  /* weekrijen */
+  .weekrow{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:.7rem;overflow:hidden;}
+  .weekhead{display:flex;justify-content:space-between;align-items:center;gap:.5rem;background:var(--navy2);color:#fff;padding:.45rem .9rem;font-size:.78rem;}
+  .weekhead .wk{font-weight:700;}
+  .weekhead .tags{display:flex;gap:.35rem;flex-wrap:wrap;justify-content:flex-end;}
+  .weekhead .tag{font-weight:700;padding:.1rem .5rem;border-radius:5px;font-size:.7rem;white-space:nowrap;}
+  .tag.stijn{background:var(--stijn);color:var(--stijn-text);}
+  .tag.marlies{background:var(--marlies);color:var(--marlies-text);}
+  .tag.mk{background:var(--mk);color:var(--mk-text);}
+  .tag.mk.off{background:rgba(255,255,255,.12);color:#cbd5e1;}
+  .days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));}
+  .day{padding:.4rem .35rem .45rem;min-height:110px;min-width:0;overflow:hidden;border-right:1px solid rgba(0,0,0,.05);font-size:.74rem;position:relative;display:flex;flex-direction:column;gap:.22rem;background:#fff;}
+  .day:last-child{border-right:none;}
+  .day .dhead{display:flex;align-items:baseline;gap:.3rem;}
+  .day .dname{font-size:.64rem;color:var(--muted);text-transform:uppercase;letter-spacing:.03em;}
+  .day .dnum{font-weight:800;font-size:.95rem;}
+  .day.today{outline:3px solid var(--purple);outline-offset:-3px;z-index:1;}
+  .day.today .dnum{color:var(--purple);}
+  .day .vandaag{display:inline-block;margin-left:auto;background:var(--purple);color:#fff;font-size:.55rem;font-weight:700;padding:.05rem .3rem;border-radius:5px;}
+
+  /* lanen */
+  .lane{border-radius:5px;padding:.18rem .35rem;font-size:.66rem;line-height:1.2;font-weight:600;border-left:3px solid transparent;}
+  .lane .lbl{display:block;font-weight:500;font-size:.6rem;opacity:.9;}
+  .lane.rl.stijn-normaal{background:var(--stijn);color:var(--stijn-text);border-left-color:var(--stijn-border);}
+  .lane.rl.marlies-normaal{background:var(--marlies);color:var(--marlies-text);border-left-color:var(--marlies-border);}
+  .lane.rl.stijn-afwijking{background:var(--stijn-afwijking);color:var(--stijn-text);border-left-color:var(--stijn-border);}
+  .lane.rl.marlies-afwijking{background:var(--marlies-afwijking);color:var(--marlies-text);border-left-color:var(--marlies-border);}
+  .lane.mk.full{background:var(--mk);color:var(--mk-text);border-left-color:var(--mk-border);}
+  .lane.mk.full.afw{background:var(--mk-afwijking);}
+  .lane.mk.am{background:linear-gradient(90deg,var(--mk) 0 50%,#f1f5f9 50% 100%);color:var(--mk-text);border-left-color:var(--mk-border);}
+  .lane.mk.pm{background:linear-gradient(90deg,#f1f5f9 0 50%,var(--mk) 50% 100%);color:var(--mk-text);border-left-color:var(--mk-border);}
+  .lane.mk.none{background:#f8fafc;color:#94a3b8;border-left-color:#e2e8f0;border-left-style:dashed;font-weight:500;}
+  .lane.mk.afw.am,.lane.mk.afw.pm,.lane.mk.afw.none{outline:2px solid var(--mk-border);outline-offset:-2px;}
+
+  /* events */
+  .events{display:flex;flex-direction:column;gap:.15rem;}
+  .ev{border-radius:5px;padding:.15rem .35rem;font-size:.64rem;line-height:1.2;font-weight:600;border-left:3px solid;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:default;}
+
+  /* samen vrij */
+  .day.vrij-full{background:var(--vrij);}
+  .day.vrij-half{background:linear-gradient(180deg,#fff 0,#fff 55%,var(--vrij) 100%);}
+  .vrij{margin-top:auto;font-size:.62rem;font-weight:700;color:var(--vrij-text);}
+
+  /* lagen verbergen */
+  body.hide-rl .lane.rl{display:none;}
+  body.hide-mk .lane.mk{display:none;}
+  body.hide-ev .events{display:none;}
+  body.hide-vrij .vrij{display:none;}
+  body.hide-vrij .day.vrij-full,body.hide-vrij .day.vrij-half{background:#fff;}
+
+  #sentinel{height:40px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:.85rem;}
+  .error{background:#fef2f2;border:1px solid #fecaca;color:#991b1b;border-radius:10px;padding:1rem;margin:1rem 0;font-size:.9rem;}
+
+  /* mobiel */
+  .lane .long,.vrij .long{display:inline;} .lane .short,.vrij .short{display:none;}
+  @media (max-width:640px){
+    #app{padding:.85rem .5rem 3rem;}
+    header.top{flex-wrap:wrap;gap:.3rem .6rem;} header.top h1{font-size:1.1rem;}
+    header.top .who{margin-left:0;width:100%;order:3;font-size:.78rem;}
+    .lanes{gap:.35rem .5rem;padding:.6rem .7rem;font-size:.72rem;} .lanes .hint{display:none;}
+    .navbar{gap:.3rem;padding:.5rem;border-radius:10px;}
+    .navbar .navbtn{width:1.9rem;height:1.9rem;font-size:.95rem;} .navbar .navtoday{padding:.5rem .6rem;font-size:.72rem;}
+    .weekhead{padding:.4rem .6rem;font-size:.68rem;} .weekhead .tag{font-size:.6rem;padding:.05rem .35rem;}
+    .day{padding:.3rem .2rem .35rem;min-height:92px;gap:.18rem;}
+    .day .dnum{font-size:.82rem;} .day .dname{font-size:.55rem;}
+    .lane{padding:.15rem .25rem;font-size:.58rem;} .lane .lbl{display:none;}
+    .lane .long,.vrij .long{display:none;} .lane .short,.vrij .short{display:inline;}
+    .ev{font-size:.56rem;padding:.12rem .25rem;}
+    .vrij{font-size:.55rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .day .vandaag{display:none;}
+    .weekhead .tags{justify-content:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<div id="app">
+  <header class="top">
+    <h1>📅 Planning Stijn</h1>
+    <span class="who">Robbe &amp; Lore · Ella, Manou &amp; Leon · samen met Marijke</span>
+  </header>
+
+  <div class="lanes" id="lanes">
+    <label><input type="checkbox" data-lane="rl" checked><span class="swatch" style="background:var(--stijn)"></span>Robbe &amp; Lore bij Stijn</label>
+    <label><input type="checkbox" data-lane="rl" checked><span class="swatch" style="background:var(--marlies)"></span>bij Marlies</label>
+    <span class="sep"></span>
+    <label><input type="checkbox" data-lane="mk" checked><span class="swatch" style="background:var(--mk)"></span>Ella, Manou &amp; Leon bij Marijke</label>
+    <span class="hint"><span class="swatch half" style="display:inline-block;vertical-align:middle"></span> = halve dag</span>
+    <span class="sep"></span>
+    <label><input type="checkbox" data-lane="ev" checked><span class="swatch" style="background:#ede9fe;border-color:#7c3aed"></span>Gebeurtenissen</label>
+    <span class="sep"></span>
+    <label><input type="checkbox" data-lane="vrij" checked><span class="swatch" style="background:var(--vrij);border-color:var(--vrij-border)"></span>☀️ Samen vrij (geen kinderen)</label>
+  </div>
+
+  <div class="navbar" id="navbar">
+    <button class="navbtn" id="navPrevYear" onclick="shiftYear(-1)" title="Vorig jaar">«</button>
+    <button class="navbtn" id="navPrevMonth" onclick="shiftMonth(-1)" title="Vorige maand">‹</button>
+    <div class="navlabel" id="navlabel">–</div>
+    <button class="navbtn" id="navNextMonth" onclick="shiftMonth(1)" title="Volgende maand">›</button>
+    <button class="navbtn" id="navNextYear" onclick="shiftYear(1)" title="Volgend jaar">»</button>
+    <button class="navtoday" onclick="jumpToToday()">Vandaag</button>
+  </div>
+
+  <div id="weeks"></div>
+  <div id="sentinel">meer laden…</div>
+</div>
+
+<!-- Kindregeling Robbe & Lore: enige bron = kindregeling/regeling.js.
+     Lokaal (file:) uit de zustermap, online van de live kindregeling-site. -->
+<script>
+  document.write('<script src="' + (location.protocol === 'file:' ? '../kindregeling/regeling.js' : 'https://stverstr.github.io/kindregeling/regeling.js') + '"><\/script>');
+</script>
+<script src="data/vriendin.js"></script>
+<script src="data/events.js"></script>
+<script>
+/* ============ HULP ============ */
+const DAYNAMES=['MA','DI','WOE','DO','VR','ZAT','ZON'];
+const MAANDEN=['jan','feb','mrt','apr','mei','jun','jul','aug','sep','okt','nov','dec'];
+const MAANDEN_VOL=['Januari','Februari','Maart','April','Mei','Juni','Juli','Augustus','September','Oktober','November','December'];
+const todayIso = (typeof fmt==='function') ? fmt(new Date()) : '';
+function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+
+function eventsOn(iso){ return EVENTS.filter(e => iso>=e.start && iso<=e.end); }
+
+/* "Samen vrij": Robbe & Lore bij Marlies én Marijke zonder kinderen.
+   'full' = hele dag, 'half' = Marijke heeft ze een halve dag (bv. woensdag tot 12u). */
+function samenVrij(rl, mk){
+  if(rl.who!=='marlies') return null;
+  if(mk.part===null) return 'full';
+  if(mk.part==='am' || mk.part==='pm') return 'half';
+  return null;
+}
+
+/* ============ WEEKRIJ ============ */
+function renderWeek(monday){
+  const wk=isoWeekNum(monday);
+  const parity=(wk%2===0)?'EVEN':'ONEVEN';
+  const base=baseParent(monday);
+  const mkWeekend = VRIENDIN.base(new Date(monday.getFullYear(),monday.getMonth(),monday.getDate()+5))==='full';
+  const row=document.createElement('div');
+  row.className='weekrow';
+  row.dataset.year=monday.getFullYear();
+  row.dataset.month=monday.getMonth();
+  const endDate=new Date(monday); endDate.setDate(endDate.getDate()+6);
+  const rangeLabel = monday.getDate()+' '+MAANDEN[monday.getMonth()]+' – '+endDate.getDate()+' '+MAANDEN[endDate.getMonth()];
+  const head=document.createElement('div');
+  head.className='weekhead';
+  head.innerHTML = `<span class="wk">Week ${wk} · ${rangeLabel}</span><span class="tags"><span class="tag ${base}">${parity} · R&amp;L ${base==='stijn'?'Stijn':'Marlies'}</span><span class="tag mk ${mkWeekend?'':'off'}">weekend ${mkWeekend?'bij Marijke':'zonder'}</span></span>`;
+  row.appendChild(head);
+
+  const days=document.createElement('div');
+  days.className='days';
+  for(let i=0;i<7;i++){
+    const d=new Date(monday); d.setDate(d.getDate()+i);
+    const iso=fmt(d);
+    const rl=dayInfo(d);                 // uit regeling.js
+    const mk=VRIENDIN.dayInfo(d);
+    const evs=eventsOn(iso);
+    const vrij=samenVrij(rl,mk);
+    const isToday = iso===todayIso;
+
+    const cell=document.createElement('div');
+    cell.className='day'+(isToday?' today':'')+(vrij==='full'?' vrij-full':vrij==='half'?' vrij-half':'');
+
+    let html = `<div class="dhead"><span class="dname">${DAYNAMES[i]}</span><span class="dnum">${d.getDate()}</span>${isToday?'<span class="vandaag">VANDAAG</span>':''}</div>`;
+
+    // laag 1: Robbe & Lore
+    const rlName = rl.who==='stijn'?'Stijn':'Marlies';
+    html += `<div class="lane rl ${cssClass(rl)}" title="Robbe &amp; Lore bij ${rlName}${rl.afwijkend?' (afwijkend)':''}"><span class="long">R&amp;L · ${rlName}</span><span class="short">${rl.who==='stijn'?'S':'M'}</span>${rl.label?`<span class="lbl">${rl.label}</span>`:''}</div>`;
+
+    // laag 2: Ella, Manou & Leon
+    const partTxt = mk.part ? VRIENDIN.partLabels[mk.part] : '—';
+    const partShort = mk.part==='full'?'Mk':mk.part==='am'?'½':mk.part==='pm'?'½':'–';
+    const partCls = mk.part===null?'none':mk.part;
+    html += `<div class="lane mk ${partCls}${mk.afwijkend?' afw':''}" title="Ella, Manou &amp; Leon ${mk.part?'bij Marijke'+(mk.part!=='full'?' ('+partTxt+')':''):'niet bij Marijke'}${mk.afwijkend?' (afwijkend)':''}"><span class="long">${mk.part?'E/M/L · '+partTxt:'E/M/L · —'}</span><span class="short">${partShort}</span>${mk.label?`<span class="lbl">${esc(mk.label)}</span>`:''}</div>`;
+
+    // laag 3: gebeurtenissen
+    if(evs.length){
+      html += '<div class="events">'+evs.map(e=>{
+        const t=EVENT_TYPES[e.type]||EVENT_TYPES.overig;
+        const tip=[t.label, e.who, e.time, e.note].filter(Boolean).join(' · ');
+        return `<div class="ev" style="background:${t.bg};color:${t.text};border-color:${t.border}" title="${esc(tip)}">${e.icon||t.icon} ${esc(e.title)}${e.time?' '+esc(e.time):''}</div>`;
+      }).join('')+'</div>';
+    }
+
+    // samen vrij
+    if(vrij==='full') html += '<div class="vrij" title="Samen vrij: geen kinderen bij Stijn, geen kinderen bij Marijke">☀️ <span class="long">samen vrij</span><span class="short">vrij</span></div>';
+    else if(vrij==='half') html += `<div class="vrij" title="${esc(VRIENDIN.vrijLabels[mk.part])}">☀️ <span class="long">${esc(VRIENDIN.vrijLabels[mk.part])}</span><span class="short">½ vrij</span></div>`;
+
+    cell.innerHTML=html;
+    days.appendChild(cell);
+  }
+  row.appendChild(days);
+  document.getElementById('weeks').appendChild(row);
+  return row;
+}
+
+/* ============ TIJDLIJN (zelfde mechaniek als kindregeling/index.html) ============ */
+let cursor=null, viewDate=new Date(), rowObserver=null, sentinelObserver=null;
+function minViewDate(){ const t=new Date(); return new Date(t.getFullYear(), t.getMonth()-1, 1); }
+const MAX_VIEW_DATE = new Date(2031,11,1);
+const MONDAY_LIMIT = mondayOf(new Date(2032,0,1));
+function clampViewDate(d){ const min=minViewDate(); if(d<min) return min; if(d>MAX_VIEW_DATE) return new Date(MAX_VIEW_DATE); return d; }
+function loadMoreWeeks(n){
+  for(let i=0;i<n;i++){
+    if(cursor>=MONDAY_LIMIT){
+      document.getElementById('sentinel').textContent='Einde van de tijdlijn (2031)';
+      if(sentinelObserver){ sentinelObserver.disconnect(); sentinelObserver=null; }
+      break;
+    }
+    const row=renderWeek(cursor);
+    if(rowObserver) rowObserver.observe(row);
+    cursor=new Date(cursor); cursor.setDate(cursor.getDate()+7);
+  }
+}
+function startFrom(monday){ document.getElementById('weeks').innerHTML=''; document.getElementById('sentinel').textContent='meer laden…'; cursor=monday; loadMoreWeeks(14); }
+function renderNavLabel(){ document.getElementById('navlabel').textContent = MAANDEN_VOL[viewDate.getMonth()]+' '+viewDate.getFullYear(); updateNavButtons(); }
+function updateNavButtons(){
+  const min=minViewDate();
+  const atMin = viewDate.getFullYear()===min.getFullYear() && viewDate.getMonth()===min.getMonth();
+  const atMax = viewDate.getFullYear()===MAX_VIEW_DATE.getFullYear() && viewDate.getMonth()===MAX_VIEW_DATE.getMonth();
+  document.getElementById('navPrevYear').disabled=atMin; document.getElementById('navPrevMonth').disabled=atMin;
+  document.getElementById('navNextMonth').disabled=atMax; document.getElementById('navNextYear').disabled=atMax;
+}
+function firstMondayInMonth(year, month){ let d=mondayOf(new Date(year, month, 1)); if(d.getMonth()!==month || d.getFullYear()!==year) d.setDate(d.getDate()+7); return d; }
+function gotoViewDate(){
+  startFrom(firstMondayInMonth(viewDate.getFullYear(), viewDate.getMonth()));
+  renderNavLabel(); restartSentinelObserver();
+  document.getElementById('navbar').scrollIntoView({behavior:'instant',block:'start'});
+}
+function shiftMonth(delta){ viewDate=clampViewDate(new Date(viewDate.getFullYear(), viewDate.getMonth()+delta, 1)); gotoViewDate(); }
+function shiftYear(delta){ viewDate=clampViewDate(new Date(viewDate.getFullYear()+delta, viewDate.getMonth(), 1)); gotoViewDate(); }
+function jumpToToday(){
+  const today=new Date(); today.setHours(0,0,0,0);
+  viewDate=new Date(today.getFullYear(), today.getMonth(), 1);
+  const lastWeek=new Date(today); lastWeek.setDate(today.getDate()-7);
+  startFrom(mondayOf(lastWeek)); renderNavLabel(); restartSentinelObserver();
+}
+function restartSentinelObserver(){
+  if(sentinelObserver) sentinelObserver.disconnect();
+  sentinelObserver=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting) loadMoreWeeks(8); }); }, {rootMargin:'400px'});
+  sentinelObserver.observe(document.getElementById('sentinel'));
+}
+function initTimeline(){
+  viewDate=new Date(); renderNavLabel();
+  rowObserver=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){ viewDate=new Date(parseInt(e.target.dataset.year,10), parseInt(e.target.dataset.month,10), 1); renderNavLabel(); } }); }, {rootMargin:'-64px 0px -85% 0px', threshold:0});
+  const today=new Date(); today.setHours(0,0,0,0);
+  const lastWeek=new Date(today); lastWeek.setDate(today.getDate()-7);
+  startFrom(mondayOf(lastWeek)); restartSentinelObserver();
+}
+
+/* ============ LAGEN AAN/UIT ============ */
+function initLanes(){
+  document.querySelectorAll('#lanes input[type=checkbox]').forEach(cb=>{
+    cb.addEventListener('change', ()=>{
+      const lane=cb.dataset.lane;
+      // beide R&L-vinkjes sturen dezelfde laag
+      document.querySelectorAll(`#lanes input[data-lane="${lane}"]`).forEach(o=>{ o.checked=cb.checked; o.closest('label').classList.toggle('off', !cb.checked); });
+      document.body.classList.toggle('hide-'+lane, !cb.checked);
+    });
+  });
+}
+
+/* ============ INIT ============ */
+window.addEventListener('DOMContentLoaded', ()=>{
+  if(typeof dayInfo!=='function' || typeof isoWeekNum!=='function'){
+    document.getElementById('weeks').innerHTML='<div class="error">De kindregeling (regeling.js) kon niet geladen worden. Controleer of https://stverstr.github.io/kindregeling/regeling.js bereikbaar is.</div>';
+    document.getElementById('sentinel').textContent='';
+    return;
+  }
+  initLanes();
+  initTimeline();
+});
+</script>
+</body>
+</html>

@@ -33,6 +33,7 @@ const EVENTS = [
   { start: '2026-12-12', end: '2026-12-12', type: 'avond',      wie: 'samen',   title: 'Die Verdammte Spielerei', icon: '🎭', who: 'Stijn, Marijke & Elien', note: 'CC Westrand Dilbeek' },
   { start: '2026-12-18', end: '2026-12-27', type: 'trip',       wie: 'stijn',   title: 'Skireis St. Anton', icon: '⛷️', who: 'Stijn, Robbe & Lore' },
   { start: '2026-12-27', end: '2027-01-03', type: 'trip',       wie: 'marijke', title: 'Malta – St Paul\'s Bay', icon: '🏝️', who: 'Marijke' },
+  { start: '2027-01-06', end: '2027-01-06', type: 'avond',      wie: 'samen',   title: 'Kommil Foo', icon: '🎭', who: 'Stijn & Marijke', time: '20:00', note: 'Aalst' },
   { start: '2027-01-27', end: '2027-02-04', type: 'trip',       wie: 'marijke', title: 'Sneeuwklassen De Brug', icon: '🏔️', who: 'Marijke (met het 6e leerjaar)', note: 'wo 27 jan – do 4 feb' },
   { start: '2027-02-20', end: '2027-02-20', type: 'avond',      wie: 'samen',   title: 'Preuteleute', icon: '🎤', who: 'Stijn & Marijke', note: 'Roosdaal' },
   { start: '2027-03-05', end: '2027-03-05', type: 'verjaardag', wie: 'samen',   title: '6 maanden samen', icon: '❤️', who: 'Stijn & Marijke', note: 'daten sinds 5 sep 2026' },

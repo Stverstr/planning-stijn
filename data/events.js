@@ -54,6 +54,7 @@ const EVENTS = [
   { start: '2027-06-05', end: '2027-06-12', type: 'trip',       wie: 'stijn',   title: 'Girona Week', icon: '🇪🇸', who: 'Stijn (alleen)' },
   { start: '2027-07-19', end: '2027-07-26', type: 'trip',       wie: 'samen',   title: 'Zomertripje', icon: '☀️', who: 'Stijn & Marijke', voorlopig: true },
   { start: '2027-08-07', end: '2027-08-13', type: 'trip',       wie: 'stijn',   title: 'Cyclonesreis Pyreneeën', icon: '🚴', who: 'Stijn met de Cyclones' },
+  { start: '2027-11-19', end: '2027-11-19', type: 'avond',      wie: 'stijn',   title: 'Zesdaagse Gent', icon: '🚴', who: 'Stijn met de Baroudeurs', note: "'t Kuipke" },
 ];
 
 /* Terugkerende dagen: één regel per persoon, 'MM-DD'. Hieronder worden ze voor

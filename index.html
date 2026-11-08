@@ -89,6 +89,7 @@
   .ev:hover{filter:brightness(.95);}
   .ev:focus-visible{outline:2px solid var(--purple);outline-offset:1px;}
   .ev .evmeta{display:none;}
+  .ev.voorlopig{border-style:dashed;border-width:1.5px 1.5px 1.5px 3px;border-color:currentColor;opacity:.75;}
   .ev.wie-stijn{border-left-color:#2563eb;} .ev.wie-marijke{border-left-color:#16a34a;} .ev.wie-samen{border-left-color:#ff1493;}
 
   /* samen vrij */
@@ -301,9 +302,9 @@ function renderWeek(monday){
       html += '<div class="events">'+evs.map(e=>{
         const t=EVENT_TYPES[e.type]||EVENT_TYPES.overig;
         const w=EVENT_WIE[e.wie]||EVENT_WIE.samen;
-        const tip=[t.label, w.label, e.who, e.time, e.note].filter(Boolean).join(' · ');
-        const meta=[e.who, e.note].filter(Boolean).join(' · ');
-        return `<div class="ev wie-${e.wie}" role="button" tabindex="0" data-ev="${EVENTS.indexOf(e)}" style="background:${t.bg};color:${t.text}" title="${esc(tip)}">${e.icon||t.icon} ${esc(e.title)}${e.time?' '+esc(e.time):''}${meta?`<span class="evmeta">${esc(meta)}</span>`:''}</div>`;
+        const tip=[t.label, w.label, e.voorlopig?'voorlopig':'', e.who, e.time, e.note].filter(Boolean).join(' · ');
+        const meta=[e.voorlopig?'voorlopig':'', e.who, e.note].filter(Boolean).join(' · ');
+        return `<div class="ev wie-${e.wie}${e.voorlopig?' voorlopig':''}" role="button" tabindex="0" data-ev="${EVENTS.indexOf(e)}" style="background:${t.bg};color:${t.text}" title="${esc(tip)}">${e.icon||t.icon} ${esc(e.title)}${e.voorlopig?' ?':''}${e.time?' '+esc(e.time):''}${meta?`<span class="evmeta">${esc(meta)}</span>`:''}</div>`;
       }).join('')+'</div>';
     }
 
@@ -334,9 +335,9 @@ function openEvent(idx){
   const t=EVENT_TYPES[e.type]||EVENT_TYPES.overig;
   const w=EVENT_WIE[e.wie]||EVENT_WIE.samen;
   const type=document.getElementById('sheetType');
-  type.textContent=`${t.icon} ${t.label} · ${w.label}`;
+  type.textContent=`${t.icon} ${t.label} · ${w.label}${e.voorlopig?' · voorlopig':''}`;
   type.style.cssText=`background:${t.bg};color:${t.text};border-color:${w.color}`;
-  document.getElementById('sheetTitle').textContent=`${e.icon||t.icon} ${e.title}`;
+  document.getElementById('sheetTitle').textContent=`${e.icon||t.icon} ${e.title}${e.voorlopig?' (voorlopig)':''}`;
   const sameYear = parseIso(e.start).getFullYear()===parseIso(e.end).getFullYear();
   const dagen=Math.round((parseIso(e.end)-parseIso(e.start))/864e5)+1;
   let when = e.start===e.end ? fmtLang(e.start,true) : `${fmtLang(e.start,!sameYear)} – ${fmtLang(e.end,true)} (${dagen} dagen)`;

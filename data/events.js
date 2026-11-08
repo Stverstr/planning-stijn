@@ -8,6 +8,8 @@
        en de randkleur in de planning, zie EVENT_WIE)
      - who: wie meegaat, vrij tekst, bv. 'Stijn & Marijke'
      - time: optioneel, bv. '19:30' (alleen voor avonden)
+     - voorlopig: optioneel, true = idee/plan, nog niet vast (gestippelde
+       rand en '?' in de planning)
    Alleen aanpassen via Claude; geen invoer in de site zelf.
    ================================================================ */
 
@@ -39,8 +41,11 @@ const EVENTS = [
   { start: '2027-02-20', end: '2027-02-20', type: 'avond',      wie: 'samen',   title: 'Preuteleute', icon: '🎤', who: 'Stijn & Marijke', note: 'Roosdaal' },
   { start: '2027-03-05', end: '2027-03-05', type: 'verjaardag', wie: 'samen',   title: '6 maanden samen', icon: '❤️', who: 'Stijn & Marijke', note: 'daten sinds 5 sep 2026' },
   { start: '2027-03-03', end: '2027-03-07', type: 'trip',       wie: 'samen',   title: 'Shortski Serfaus-Fiss-Ladis', icon: '⛷️', who: 'Stijn & Marijke', note: 'Vaya Ladis Hotel; wo vertrek, do–zo skiën' },
+  // Voorlopig (8 nov 2026): tripjes die we samen willen doen, nog niet vastgelegd.
+  { start: '2027-03-29', end: '2027-04-02', type: 'trip',       wie: 'samen',   title: 'Paastripje', icon: '🐣', who: 'Stijn & Marijke', voorlopig: true },
   { start: '2027-04-05', end: '2027-04-10', type: 'trip',       wie: 'marijke', title: 'Skivakantie Holzgau', icon: '⛷️', who: 'Marijke, Ella, Manou & Leon' },
   { start: '2027-04-16', end: '2027-04-18', type: 'weekend',    wie: 'samen',   title: 'Amstel Gold Race Valkenburg', icon: '🚴', who: 'Stijn & Marijke', note: 'Thermaetel; tourversie za 17 april' },
+  { start: '2027-07-19', end: '2027-07-26', type: 'trip',       wie: 'samen',   title: 'Zomertripje', icon: '☀️', who: 'Stijn & Marijke', voorlopig: true },
 ];
 
 /* Terugkerende dagen: één regel per persoon, 'MM-DD'. Hieronder worden ze voor

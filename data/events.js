@@ -40,7 +40,7 @@ const EVENTS = [
   { start: '2026-11-17', end: '2026-11-17', type: 'werk',       wie: 'stijn',   title: 'Myreas AI-training + BBQ', icon: '💼', who: 'Stijn', time: '16:00', note: 'tot 22:00 · Marktstraat 62, Lennik' },
   { start: '2026-11-18', end: '2026-11-20', type: 'werk',       wie: 'marijke', title: 'Directie-3-daagse', icon: '💼', who: 'Marijke', note: 'congres · Vayamundo, Oostende' },
   { start: '2026-11-21', end: '2026-11-21', type: 'avond',      wie: 'marijke', title: 'Eten Les Plouques', icon: '🍽️', who: 'Marijke' },
-  { start: '2026-11-26', end: '2026-11-26', type: 'avond',      wie: 'marijke', title: 'Comedyavond Vierhoek', icon: '🎤', who: 'Marijke', time: '20:00' },
+  { start: '2026-11-26', end: '2026-11-26', type: 'avond',      wie: 'samen',   title: 'Comedyavond Vierhoek', icon: '🎤', who: 'Stijn & Marijke', time: '20:00', voorlopig: true },
   { start: '2026-11-29', end: '2026-11-29', type: 'overig',     wie: 'marijke', title: 'Activiteit verjaardag pa', icon: '🎂', who: 'Marijke' },
   { start: '2026-12-05', end: '2026-12-05', type: 'avond',      wie: 'marijke', title: 'Fuif Laurien', icon: '🎉', who: 'Marijke', time: '21:00', note: 'Brussel' },
   { start: '2026-12-12', end: '2026-12-12', type: 'avond',      wie: 'samen',   title: 'Die Verdammte Spielerei', icon: '🎭', who: 'Stijn, Marijke & Elien', note: 'CC Westrand Dilbeek' },

@@ -43,6 +43,7 @@ const EVENTS = [
   { start: '2026-11-26', end: '2026-11-26', type: 'avond',      wie: 'samen',   title: 'Comedyavond Vierhoek', icon: '🎤', who: 'Stijn & Marijke', time: '20:00', voorlopig: true },
   { start: '2026-11-29', end: '2026-11-29', type: 'overig',     wie: 'samen',   title: 'Activiteit verjaardag pa', icon: '🎂', who: 'Stijn & Marijke', voorlopig: true },
   { start: '2026-12-05', end: '2026-12-05', type: 'avond',      wie: 'samen',   title: 'Fuif Laurien', icon: '🎉', who: 'Stijn & Marijke', time: '21:00', note: 'Brussel', voorlopig: true },
+  { start: '2026-12-10', end: '2026-12-10', type: 'werk',       wie: 'marijke', title: 'PV + ouderraad', icon: '💼', who: 'Marijke', time: '19:00', note: 'tot 21:00 · Basisschool De Brug' },
   { start: '2026-12-12', end: '2026-12-12', type: 'avond',      wie: 'samen',   title: 'Die Verdammte Spielerei', icon: '🎭', who: 'Stijn, Marijke & Elien', note: 'CC Westrand Dilbeek' },
   { start: '2026-12-17', end: '2026-12-17', type: 'werk',       wie: 'stijn',   title: 'Myreas Christmas Dinner', icon: '🎄', who: 'Stijn', time: '19:00', note: 'tot 23:00 · de Merode, Brussel' },
   { start: '2026-12-18', end: '2026-12-27', type: 'trip',       wie: 'stijn',   title: 'Skireis St. Anton', icon: '⛷️', who: 'Stijn, Robbe & Lore' },
@@ -54,6 +55,7 @@ const EVENTS = [
   { start: '2027-03-05', end: '2027-03-05', type: 'verjaardag', wie: 'samen',   title: '6 maanden samen', icon: '❤️', who: 'Stijn & Marijke', note: 'daten sinds 5 sep 2026' },
   { start: '2027-03-03', end: '2027-03-07', type: 'trip',       wie: 'samen',   title: 'Shortski Serfaus-Fiss-Ladis', icon: '⛷️', who: 'Stijn & Marijke', note: 'Vaya Ladis Hotel; wo vertrek, do–zo skiën' },
   { start: '2027-03-08', end: '2027-03-08', type: 'overig',     wie: 'samen',   title: 'Carnaval Halle', icon: '🎭', who: 'Stijn & Marijke', voorlopig: true },
+  { start: '2027-03-11', end: '2027-03-11', type: 'werk',       wie: 'marijke', title: 'PV + ouderraad', icon: '💼', who: 'Marijke', time: '19:00', note: 'tot 21:00 · Basisschool De Brug' },
   // Voorlopig (8 nov 2026): tripjes die we samen willen doen, nog niet vastgelegd.
   { start: '2027-03-29', end: '2027-04-02', type: 'trip',       wie: 'samen',   title: 'Paastripje', icon: '🐣', who: 'Stijn & Marijke', voorlopig: true },
   // Wielerklassiekers 2027 (8 nov 2026). Data: UCI-kalender (RVV zo 4 apr, Parijs-Roubaix zo 11 apr);

@@ -66,7 +66,7 @@ const EVENTS = [
   { start: '2027-04-10', end: '2027-04-10', type: 'weekend',    wie: 'stijn',   title: 'Parijs-Roubaix toertocht', icon: '🚴', who: 'Stijn', note: 'Paris-Roubaix Challenge; datum nog niet officieel bevestigd. R&L bij Stijn: opvang regelen' },
   { start: '2027-04-11', end: '2027-04-11', type: 'weekend',    wie: 'stijn',   title: 'Parijs-Roubaix – elitekoers', icon: '🪨', who: 'Stijn' },
   { start: '2027-04-16', end: '2027-04-18', type: 'weekend',    wie: 'samen',   title: 'Amstel Gold Race Valkenburg', icon: '🚴', who: 'Stijn & Marijke', note: 'Thermaetel; tourversie za 17 april' },
-  { start: '2027-05-07', end: '2027-05-08', type: 'weekend',    wie: 'samen',   title: 'Rock Affligem', icon: '🎸', who: 'Stijn & Marijke' },
+  { start: '2027-05-07', end: '2027-05-07', type: 'weekend',    wie: 'samen',   title: 'Rock Affligem', icon: '🎸', who: 'Marijke (Stijn misschien)', voorlopig: true },
   { start: '2027-05-09', end: '2027-05-09', type: 'weekend',    wie: 'samen',   title: 'Kom op tegen Kanker-rit', icon: '🚴', who: 'Stijn & Marijke', note: 'Mechelen' },
   { start: '2027-05-29', end: '2027-05-29', type: 'werk',       wie: 'marijke', title: 'Kruikenburgse feesten', icon: '🎉', who: 'Marijke', note: 'Basisschool De Brug' },
   { start: '2027-06-05', end: '2027-06-12', type: 'trip',       wie: 'stijn',   title: 'Girona Week', icon: '🇪🇸', who: 'Stijn (alleen)' },

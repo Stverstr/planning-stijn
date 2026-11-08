@@ -3,16 +3,24 @@
    Basisregel (stand 1 nov 2026):
      - elke week: maandag en dinsdag volledig, woensdag tot de middag
      - woensdagavond en donderdag: geen kinderen
-     - weekend om de week, in ONEVEN ISO-weken: vrijdag na school,
-       zaterdag en zondag volledig. In even weken ook vrijdag zonder.
-       IJkpunt: weekend 31 okt – 1 nov 2026 (week 44, even) was zónder.
+     - weekend om de week: vrijdag na school, zaterdag en zondag
+       volledig. In de andere weken ook vrijdag zonder.
+       Tot en met week 53 van 2026 zijn dat de ONEVEN ISO-weken
+       (ijkpunt: weekend 31 okt – 1 nov 2026, week 44, was zónder).
+       Vanaf maandag 4 jan 2027 (CUTOVER_MK, week 1) wisselt dat naar
+       de EVEN weken: eerste weekend mét kinderen 16–17 jan 2027,
+       weekend 9–10 jan zonder. Zo vallen haar weekends vanaf dan
+       samen met die van Robbe & Lore bij Stijn (zelfde omslag in
+       kindregeling/regeling.js). Afgesproken 8 nov 2026.
    Een dag krijgt 'full' | 'am' | 'pm' | null  (null = geen kinderen).
    'am' = tot 12u (woensdag), 'pm' = na school (vrijdag).
    Uitzonderingen zeggen enkel het deel van de dag; of dat afwijkend is,
    wordt afgeleid door te vergelijken met base() — zelfde principe als
    dayInfo() in kindregeling/regeling.js.
-   Vereist: fmt() en isoWeekNum() uit kindregeling/regeling.js.
+   Vereist: fmt(), mondayOf() en isoWeekNum() uit kindregeling/regeling.js.
    ================================================================ */
+
+const CUTOVER_MK = '2027-01-04';   // maandag van ISO-week 1 2027: vanaf hier weekends in even weken
 
 const VRIENDIN = {
   id: 'marijke',
@@ -26,11 +34,12 @@ const VRIENDIN = {
   base(date){
     const wd = (date.getDay() + 6) % 7;          // 0 = maandag … 6 = zondag
     const odd = isoWeekNum(date) % 2 === 1;
+    const weekend = fmt(mondayOf(date)) >= CUTOVER_MK ? !odd : odd;   // weekendweek: oneven tot de omslag, even erna
     if (wd <= 1) return 'full';                   // ma, di
     if (wd === 2) return 'am';                    // woe tot 12u
     if (wd === 3) return null;                    // do
-    if (wd === 4) return odd ? 'pm' : null;       // vr na school (weekendweek)
-    return odd ? 'full' : null;                   // za, zo
+    if (wd === 4) return weekend ? 'pm' : null;   // vr na school (weekendweek)
+    return weekend ? 'full' : null;               // za, zo
   },
 
   // Uitzonderingen (chronologisch). Datums 'YYYY-MM-DD', inclusief.

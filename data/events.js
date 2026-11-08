@@ -24,7 +24,7 @@ const EVENT_TYPES = {
 const EVENT_WIE = {
   stijn:   { label: 'Stijn',   color: '#2563eb' },
   marijke: { label: 'Marijke', color: '#16a34a' },
-  samen:   { label: 'Samen',   color: '#7c3aed' },
+  samen:   { label: 'Samen',   color: '#ff1493' },
 };
 
 const EVENTS = [

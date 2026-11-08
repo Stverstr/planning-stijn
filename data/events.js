@@ -34,6 +34,7 @@ const EVENTS = [
   { start: '2026-11-10', end: '2026-11-10', type: 'avond',      wie: 'stijn',   title: 'Cyclones: zomervakantie voorbereiden', icon: '🚴', who: 'Stijn', note: 'bij Stijn thuis' },
   { start: '2026-11-11', end: '2026-11-11', type: 'avond',      wie: 'samen',   title: 'Candle Light Dinner by Naked Chef SV', icon: '🕯️', who: 'Stijn & Marijke' },
   { start: '2026-11-12', end: '2026-11-12', type: 'avond',      wie: 'samen',   title: 'Belgian Cats – Zweden', icon: '🏀', who: 'Stijn & Marijke', time: '20:30', note: 'Charleroi' },
+  { start: '2026-11-13', end: '2026-11-13', type: 'avond',      wie: 'stijn',   title: 'Etentje met de Bellem boys', icon: '🍽️', who: 'Stijn', note: 'Aalter' },
   { start: '2026-11-14', end: '2026-11-14', type: 'weekend',    wie: 'samen',   title: 'Baroudeurs-tocht', icon: '🚴', who: 'Stijn & Marijke', note: 'fietstocht Affligem/Liedekerke met Michiel & Isabelle, daarna De Heeren van Liedekerke; slapen in Ursel' },
   { start: '2026-11-17', end: '2026-11-17', type: 'werk',       wie: 'stijn',   title: 'Myreas AI-training + BBQ', icon: '💼', who: 'Stijn', time: '16:00', note: 'tot 22:00 · Marktstraat 62, Lennik' },
   { start: '2026-12-12', end: '2026-12-12', type: 'avond',      wie: 'samen',   title: 'Die Verdammte Spielerei', icon: '🎭', who: 'Stijn, Marijke & Elien', note: 'CC Westrand Dilbeek' },

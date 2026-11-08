@@ -23,6 +23,7 @@ const EVENTS = [
   { start: '2026-11-14', end: '2026-11-15', type: 'weekend', title: 'Weekend Ursel', icon: '🚴', who: 'Stijn & Marijke', note: 'za Baroudeurs-tocht Affligem/Liedekerke met Michiel & Isabelle, daarna De Heeren van Liedekerke' },
   { start: '2026-12-12', end: '2026-12-12', type: 'avond',   title: 'Die Verdammte Spielerei', icon: '🎭', who: 'Stijn, Marijke & Elien', note: 'CC Westrand Dilbeek' },
   { start: '2026-12-18', end: '2026-12-27', type: 'trip',    title: 'Skireis St. Anton', icon: '⛷️', who: 'Stijn, Robbe & Lore' },
+  { start: '2026-12-28', end: '2027-01-03', type: 'trip',    title: 'Sneeuwklassen De Brug', icon: '🏔️', who: 'Marijke (6e leerjaar)', note: 'laatste week kerstvakantie; exacte dagen nog te bevestigen' },
   { start: '2027-02-20', end: '2027-02-20', type: 'avond',   title: 'Preuteleute', icon: '🎤', who: 'Stijn & Marijke', note: 'Roosdaal' },
   { start: '2027-03-05', end: '2027-03-05', type: 'verjaardag', title: '6 maanden samen', icon: '❤️', who: 'Stijn & Marijke', note: 'daten sinds 5 sep 2026' },
   { start: '2027-03-03', end: '2027-03-07', type: 'trip',    title: 'Shortski Serfaus-Fiss-Ladis', icon: '⛷️', who: 'Stijn & Marijke', note: 'Vaya Ladis Hotel; wo vertrek, do–zo skiën' },

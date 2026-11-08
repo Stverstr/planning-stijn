@@ -32,6 +32,7 @@ const EVENT_WIE = {
 const EVENTS = [
   { start: '2026-11-09', end: '2026-11-09', type: 'avond',      wie: 'samen',   title: 'Etentje Rugbyman 2', icon: '🦞', who: 'Stijn & Marijke', time: '19:00', note: 'Brussel · kreeftje' },
   { start: '2026-11-10', end: '2026-11-10', type: 'avond',      wie: 'stijn',   title: 'Cyclones: zomervakantie voorbereiden', icon: '🚴', who: 'Stijn', note: 'bij Stijn thuis' },
+  { start: '2026-11-10', end: '2026-11-10', type: 'avond',      wie: 'marijke', title: 'Drinks met Elien', icon: '🍸', who: 'Marijke & Elien', note: 'Den Tuus, Asse' },
   { start: '2026-11-11', end: '2026-11-11', type: 'avond',      wie: 'samen',   title: 'Candle Light Dinner by Naked Chef SV', icon: '🕯️', who: 'Stijn & Marijke' },
   { start: '2026-11-12', end: '2026-11-12', type: 'avond',      wie: 'samen',   title: 'Belgian Cats – Zweden', icon: '🏀', who: 'Stijn & Marijke', time: '20:30', note: 'Charleroi' },
   { start: '2026-11-13', end: '2026-11-13', type: 'avond',      wie: 'stijn',   title: 'Etentje met de Bellem boys', icon: '🍽️', who: 'Stijn', note: 'Aalter' },

@@ -411,12 +411,13 @@ function jumpToToday(){
   viewDate=new Date(today.getFullYear(), today.getMonth(), 1);
   const lastWeek=new Date(today); lastWeek.setDate(today.getDate()-7);
   startFrom(mondayOf(lastWeek)); renderNavLabel(); restartSentinelObserver();
-  scrollToToday();
+  scrollToToday(true);
 }
-/* Weekweergave: de week van vandaag bovenaan, net onder de navigatiebalk (de vorige week staat erboven).
-   In de maandweergave is vandaag al in beeld (tweede rij), dus daar niets scrollen. */
-function scrollToToday(){
-  if(!document.body.classList.contains('view-week')) return;
+/* De week van vandaag bovenaan, net onder de navigatiebalk (de vorige week staat erboven).
+   Bij het laden alleen in de weekweergave (in de maandweergave is vandaag al in beeld en blijft de legende
+   zichtbaar); de knop "Vandaag" scrolt altijd, anders blijf je staan waar je was. */
+function scrollToToday(force){
+  if(!force && !document.body.classList.contains('view-week')) return;
   const cell=document.querySelector('.day.today'); if(!cell) return;
   const row=cell.closest('.weekrow'), nav=document.getElementById('navbar');
   const top=row.getBoundingClientRect().top+window.scrollY-nav.offsetHeight-16;
@@ -433,7 +434,7 @@ function initTimeline(){
   const today=new Date(); today.setHours(0,0,0,0);
   const lastWeek=new Date(today); lastWeek.setDate(today.getDate()-7);
   startFrom(mondayOf(lastWeek)); restartSentinelObserver();
-  scrollToToday();
+  scrollToToday(false);
 }
 
 /* ============ LAGEN AAN/UIT ============ */

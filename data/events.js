@@ -39,6 +39,7 @@ const EVENTS = [
   { start: '2026-11-14', end: '2026-11-14', type: 'weekend',    wie: 'samen',   title: 'Baroudeurs-tocht', icon: '🚴', who: 'Stijn & Marijke', note: 'fietstocht Affligem/Liedekerke met Michiel & Isabelle, daarna De Heeren van Liedekerke; slapen in Ursel' },
   { start: '2026-11-17', end: '2026-11-17', type: 'werk',       wie: 'stijn',   title: 'Myreas AI-training + BBQ', icon: '💼', who: 'Stijn', time: '16:00', note: 'tot 22:00 · Marktstraat 62, Lennik' },
   { start: '2026-11-18', end: '2026-11-20', type: 'werk',       wie: 'marijke', title: 'Directie-3-daagse', icon: '💼', who: 'Marijke', note: 'congres · Vayamundo, Oostende · tot vr 20 nov 12:30' },
+  { start: '2026-11-20', end: '2026-11-20', type: 'overig',     wie: 'samen',   title: 'Lunchdate', icon: '🥂', who: 'Stijn & Marijke', time: '13:00' },
   { start: '2026-11-21', end: '2026-11-21', type: 'avond',      wie: 'marijke', title: 'Eten Les Plouques', icon: '🍽️', who: 'Marijke' },
   { start: '2026-11-26', end: '2026-11-26', type: 'avond',      wie: 'samen',   title: 'Comedyavond Vierhoek', icon: '🎤', who: 'Stijn & Marijke', time: '20:00', voorlopig: true },
   { start: '2026-11-29', end: '2026-11-29', type: 'overig',     wie: 'samen',   title: 'Activiteit verjaardag pa', icon: '🎂', who: 'Stijn & Marijke', voorlopig: true },

@@ -24,6 +24,7 @@ const EVENTS = [
   { start: '2026-12-12', end: '2026-12-12', type: 'avond',   title: 'Die Verdammte Spielerei', icon: '🎭', who: 'Stijn, Marijke & Elien', note: 'CC Westrand Dilbeek' },
   { start: '2026-12-18', end: '2026-12-27', type: 'trip',    title: 'Skireis St. Anton', icon: '⛷️', who: 'Stijn, Robbe & Lore' },
   { start: '2027-02-20', end: '2027-02-20', type: 'avond',   title: 'Preuteleute', icon: '🎤', who: 'Stijn & Marijke', note: 'Roosdaal' },
+  { start: '2027-03-05', end: '2027-03-05', type: 'verjaardag', title: '6 maanden samen', icon: '❤️', who: 'Stijn & Marijke', note: 'daten sinds 5 sep 2026' },
   { start: '2027-03-03', end: '2027-03-07', type: 'trip',    title: 'Shortski Serfaus-Fiss-Ladis', icon: '⛷️', who: 'Stijn & Marijke', note: 'Vaya Ladis Hotel; wo vertrek, do–zo skiën' },
   { start: '2027-04-05', end: '2027-04-10', type: 'trip',    title: 'Skivakantie Holzgau', icon: '⛷️', who: 'Marijke, Ella, Manou & Leon' },
   { start: '2027-04-16', end: '2027-04-18', type: 'weekend', title: 'Amstel Gold Race Valkenburg', icon: '🚴', who: 'Stijn & Marijke', note: 'Thermaetel; tourversie za 17 april' },
@@ -35,7 +36,7 @@ const VERJAARDAGEN = [
   { day: '03-21', title: 'Verjaardag Lore' },
   { day: '07-14', title: 'Verjaardag Marijke' },
   { day: '08-28', title: 'Verjaardag Robbe' },
-  { day: '09-05', title: 'Eerste date Stijn & Marijke', icon: '❤️', since: 2026 },
+  { day: '09-05', title: 'samen', icon: '❤️', since: 2026 },   // daten sinds 5 sep 2026 → '1 jaar samen', '2 jaar samen', …
   { day: '10-04', title: 'Verjaardag Stijn' },
   { day: '10-13', title: 'Verjaardag Manou' },
   // { day: 'MM-DD', title: 'Verjaardag Ella' },   // datum nog aan te vullen
@@ -45,6 +46,6 @@ for (let y = 2026; y <= 2031; y++) {
   for (const v of VERJAARDAGEN) {
     if (v.since && y <= v.since) continue;
     const d = `${y}-${v.day}`;
-    EVENTS.push({ start: d, end: d, type: 'verjaardag', title: v.since ? `${v.title} (${y - v.since} jaar)` : v.title, icon: v.icon });
+    EVENTS.push({ start: d, end: d, type: 'verjaardag', title: v.since ? `${y - v.since} jaar ${v.title}` : v.title, icon: v.icon });
   }
 }

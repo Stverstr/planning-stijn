@@ -29,7 +29,7 @@ const EVENT_WIE = {
 
 const EVENTS = [
   { start: '2026-11-12', end: '2026-11-12', type: 'avond',      wie: 'samen',   title: 'Belgian Cats – Zweden', icon: '🏀', who: 'Stijn & Marijke', time: '20:30', note: 'Charleroi' },
-  { start: '2026-11-14', end: '2026-11-15', type: 'weekend',    wie: 'samen',   title: 'Weekend Ursel', icon: '🚴', who: 'Stijn & Marijke', note: 'za Baroudeurs-tocht Affligem/Liedekerke met Michiel & Isabelle, daarna De Heeren van Liedekerke' },
+  { start: '2026-11-14', end: '2026-11-14', type: 'weekend',    wie: 'samen',   title: 'Baroudeurs-tocht & Ursel', icon: '🚴', who: 'Stijn & Marijke', note: 'fietstocht Affligem/Liedekerke met Michiel & Isabelle, daarna De Heeren van Liedekerke; bij Stijn in Ursel' },
   { start: '2026-12-12', end: '2026-12-12', type: 'avond',      wie: 'samen',   title: 'Die Verdammte Spielerei', icon: '🎭', who: 'Stijn, Marijke & Elien', note: 'CC Westrand Dilbeek' },
   { start: '2026-12-18', end: '2026-12-27', type: 'trip',       wie: 'stijn',   title: 'Skireis St. Anton', icon: '⛷️', who: 'Stijn, Robbe & Lore' },
   { start: '2026-12-28', end: '2027-01-03', type: 'trip',       wie: 'marijke', title: 'Sneeuwklassen De Brug', icon: '🏔️', who: 'Marijke (6e leerjaar)', note: 'laatste week kerstvakantie; exacte dagen nog te bevestigen' },

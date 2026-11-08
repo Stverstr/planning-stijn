@@ -400,6 +400,16 @@ function jumpToToday(){
   viewDate=new Date(today.getFullYear(), today.getMonth(), 1);
   const lastWeek=new Date(today); lastWeek.setDate(today.getDate()-7);
   startFrom(mondayOf(lastWeek)); renderNavLabel(); restartSentinelObserver();
+  scrollToToday();
+}
+/* Weekweergave: de week van vandaag bovenaan, net onder de navigatiebalk (de vorige week staat erboven).
+   In de maandweergave is vandaag al in beeld (tweede rij), dus daar niets scrollen. */
+function scrollToToday(){
+  if(!document.body.classList.contains('view-week')) return;
+  const cell=document.querySelector('.day.today'); if(!cell) return;
+  const row=cell.closest('.weekrow'), nav=document.getElementById('navbar');
+  const top=row.getBoundingClientRect().top+window.scrollY-nav.offsetHeight-16;
+  window.scrollTo({top:Math.max(0,top), behavior:'instant'});
 }
 function restartSentinelObserver(){
   if(sentinelObserver) sentinelObserver.disconnect();
@@ -412,6 +422,7 @@ function initTimeline(){
   const today=new Date(); today.setHours(0,0,0,0);
   const lastWeek=new Date(today); lastWeek.setDate(today.getDate()-7);
   startFrom(mondayOf(lastWeek)); restartSentinelObserver();
+  scrollToToday();
 }
 
 /* ============ LAGEN AAN/UIT ============ */

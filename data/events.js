@@ -43,14 +43,14 @@ const EVENTS = [
 /* Terugkerende dagen: één regel per persoon, 'MM-DD'. Hieronder worden ze voor
    elk jaar t/m 2031 (einde van de tijdlijn) als event toegevoegd. */
 const VERJAARDAGEN = [
+  { day: '01-21', wie: 'marijke', title: 'Verjaardag Ella' },     // °2011
   { day: '03-21', wie: 'stijn',   title: 'Verjaardag Lore' },
+  { day: '07-01', wie: 'marijke', title: 'Verjaardag Leon' },     // °2016
   { day: '07-14', wie: 'marijke', title: 'Verjaardag Marijke' },
   { day: '08-28', wie: 'stijn',   title: 'Verjaardag Robbe' },
   { day: '09-05', wie: 'samen',   title: 'samen', icon: '❤️', since: 2026 },   // daten sinds 5 sep 2026 → '1 jaar samen', '2 jaar samen', …
   { day: '10-04', wie: 'stijn',   title: 'Verjaardag Stijn' },
   { day: '10-13', wie: 'marijke', title: 'Verjaardag Manou' },
-  // { day: 'MM-DD', wie: 'marijke', title: 'Verjaardag Ella' },   // datum nog aan te vullen
-  // { day: 'MM-DD', wie: 'marijke', title: 'Verjaardag Leon' },   // datum nog aan te vullen
 ];
 for (let y = 2026; y <= 2031; y++) {
   for (const v of VERJAARDAGEN) {

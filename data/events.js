@@ -31,6 +31,7 @@ const EVENT_WIE = {
 
 const EVENTS = [
   { start: '2026-11-09', end: '2026-11-09', type: 'avond',      wie: 'samen',   title: 'Etentje met Marijke', icon: '🍽️', who: 'Stijn & Marijke', time: '19:00' },
+  { start: '2026-11-11', end: '2026-11-11', type: 'avond',      wie: 'samen',   title: 'Candle Light Dinner by Naked Chef SV', icon: '🕯️', who: 'Stijn & Marijke' },
   { start: '2026-11-12', end: '2026-11-12', type: 'avond',      wie: 'samen',   title: 'Belgian Cats – Zweden', icon: '🏀', who: 'Stijn & Marijke', time: '20:30', note: 'Charleroi' },
   { start: '2026-11-14', end: '2026-11-14', type: 'weekend',    wie: 'samen',   title: 'Baroudeurs-tocht', icon: '🚴', who: 'Stijn & Marijke', note: 'fietstocht Affligem/Liedekerke met Michiel & Isabelle, daarna De Heeren van Liedekerke; slapen in Ursel' },
   { start: '2026-11-17', end: '2026-11-17', type: 'werk',       wie: 'stijn',   title: 'Myreas AI-training + BBQ', icon: '💼', who: 'Stijn', time: '16:00', note: 'tot 22:00 · Marktstraat 62, Lennik' },

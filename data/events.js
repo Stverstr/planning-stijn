@@ -44,11 +44,12 @@ const EVENTS = [
   // Voorlopig (8 nov 2026): tripjes die we samen willen doen, nog niet vastgelegd.
   { start: '2027-03-29', end: '2027-04-02', type: 'trip',       wie: 'samen',   title: 'Paastripje', icon: '🐣', who: 'Stijn & Marijke', voorlopig: true },
   // Wielerklassiekers 2027 (8 nov 2026). Data: UCI-kalender (RVV zo 4 apr, Parijs-Roubaix zo 11 apr);
-  // de toerversies zijn op de zaterdag ervoor. Parijs-Roubaix enkel de toertocht, niet de koers.
+  // de toerversies zijn op de zaterdag ervoor. Ook beide elitekoersen (keuze Stijn, 8 nov 2026).
   { start: '2027-04-03', end: '2027-04-03', type: 'weekend',    wie: 'stijn',   title: 'Ronde van Vlaanderen toertocht', icon: '🚴', who: 'Stijn' },
-  { start: '2027-04-04', end: '2027-04-04', type: 'weekend',    wie: 'stijn',   title: 'Ronde van Vlaanderen', icon: '🦁', who: 'Stijn', note: 'de koers' },
+  { start: '2027-04-04', end: '2027-04-04', type: 'weekend',    wie: 'stijn',   title: 'Ronde van Vlaanderen – elitekoers', icon: '🦁', who: 'Stijn' },
   { start: '2027-04-05', end: '2027-04-10', type: 'trip',       wie: 'marijke', title: 'Skivakantie Holzgau', icon: '⛷️', who: 'Marijke, Ella, Manou & Leon' },
-  { start: '2027-04-10', end: '2027-04-10', type: 'weekend',    wie: 'stijn',   title: 'Parijs-Roubaix toertocht', icon: '🚴', who: 'Stijn', note: 'Paris-Roubaix Challenge; datum nog niet officieel bevestigd' },
+  { start: '2027-04-10', end: '2027-04-10', type: 'weekend',    wie: 'stijn',   title: 'Parijs-Roubaix toertocht', icon: '🚴', who: 'Stijn', note: 'Paris-Roubaix Challenge; datum nog niet officieel bevestigd. R&L bij Stijn: opvang regelen' },
+  { start: '2027-04-11', end: '2027-04-11', type: 'weekend',    wie: 'stijn',   title: 'Parijs-Roubaix – elitekoers', icon: '🪨', who: 'Stijn' },
   { start: '2027-04-16', end: '2027-04-18', type: 'weekend',    wie: 'samen',   title: 'Amstel Gold Race Valkenburg', icon: '🚴', who: 'Stijn & Marijke', note: 'Thermaetel; tourversie za 17 april' },
   { start: '2027-07-19', end: '2027-07-26', type: 'trip',       wie: 'samen',   title: 'Zomertripje', icon: '☀️', who: 'Stijn & Marijke', voorlopig: true },
 ];

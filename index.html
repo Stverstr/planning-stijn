@@ -44,6 +44,7 @@
   .navbar .navbtn{background:rgba(255,255,255,.12);border:none;color:#fff;width:2.1rem;height:2.1rem;border-radius:8px;font-size:1.05rem;font-weight:700;cursor:pointer;line-height:1;}
   .navbar .navbtn:hover{background:rgba(255,255,255,.22);}
   .navbar .navbtn:disabled{opacity:.3;cursor:not-allowed;}
+  .navbar .navrefresh{font-size:1.2rem;}
   .navbar .navtoday{background:var(--purple);border:none;color:#fff;font-weight:700;font-size:.8rem;padding:.5rem .8rem;border-radius:8px;cursor:pointer;white-space:nowrap;}
 
   /* weekrijen */
@@ -198,6 +199,7 @@
     <button class="navbtn" id="navNextMonth" onclick="shiftMonth(1)" title="Volgende maand">›</button>
     <button class="navbtn" id="navNextYear" onclick="shiftYear(1)" title="Volgend jaar">»</button>
     <button class="navtoday" onclick="jumpToToday()">Vandaag</button>
+    <button class="navbtn navrefresh" onclick="refreshPage()" title="Vernieuwen: haal de nieuwste planning op" aria-label="Vernieuwen">⟳</button>
   </div>
 
   <div id="weeks"></div>
@@ -217,10 +219,18 @@
 <!-- Kindregeling Robbe & Lore: enige bron = kindregeling/regeling.js.
      Lokaal (file:) uit de zustermap, online van de live kindregeling-site. -->
 <script>
-  document.write('<script src="' + (location.protocol === 'file:' ? '../kindregeling/regeling.js' : 'https://stverstr.github.io/kindregeling/regeling.js') + '"><\/script>');
+  /* Vernieuwknop: herlaadt met ?r=<tijd>, en dat achtervoegsel gaat ook mee naar de databestanden,
+     zodat de browser (iPhone!) geen oude kopie uit zijn cache toont. */
+  var CACHE_Q = (function () { var r = new URLSearchParams(location.search).get('r'); return r ? '?r=' + encodeURIComponent(r) : ''; })();
+  function refreshPage() { var u = new URL(location.href); u.searchParams.set('r', Date.now()); location.replace(u.toString()); }
+  document.write('<script src="' + (location.protocol === 'file:' ? '../kindregeling/regeling.js' : 'https://stverstr.github.io/kindregeling/regeling.js') + CACHE_Q + '"><\/script>');
 </script>
-<script src="data/vriendin.js"></script>
-<script src="data/events.js"></script>
+<script>
+  document.write('<script src="data/vriendin.js' + CACHE_Q + '"><\/script>');
+  document.write('<script src="data/events.js' + CACHE_Q + '"><\/script>');
+  // ?r=… weer uit de adresbalk halen, zodat een bladwijzer of beginschermlink altijd vers laadt.
+  if (CACHE_Q) { var u0 = new URL(location.href); u0.searchParams.delete('r'); history.replaceState(null, '', u0.toString()); }
+</script>
 <script>
 /* ============ HULP ============ */
 const DAYNAMES=['MA','DI','WOE','DO','VR','ZAT','ZON'];

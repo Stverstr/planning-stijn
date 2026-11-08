@@ -33,6 +33,7 @@ const EVENTS = [
   { start: '2026-11-09', end: '2026-11-09', type: 'avond',      wie: 'samen',   title: 'Etentje met Marijke', icon: '🍽️', who: 'Stijn & Marijke', time: '19:00' },
   { start: '2026-11-12', end: '2026-11-12', type: 'avond',      wie: 'samen',   title: 'Belgian Cats – Zweden', icon: '🏀', who: 'Stijn & Marijke', time: '20:30', note: 'Charleroi' },
   { start: '2026-11-14', end: '2026-11-14', type: 'weekend',    wie: 'samen',   title: 'Baroudeurs-tocht', icon: '🚴', who: 'Stijn & Marijke', note: 'fietstocht Affligem/Liedekerke met Michiel & Isabelle, daarna De Heeren van Liedekerke; slapen in Ursel' },
+  { start: '2026-11-17', end: '2026-11-17', type: 'werk',       wie: 'stijn',   title: 'Myreas AI-training + BBQ', icon: '💼', who: 'Stijn', time: '16:00', note: 'tot 22:00 · Marktstraat 62, Lennik' },
   { start: '2026-12-12', end: '2026-12-12', type: 'avond',      wie: 'samen',   title: 'Die Verdammte Spielerei', icon: '🎭', who: 'Stijn, Marijke & Elien', note: 'CC Westrand Dilbeek' },
   { start: '2026-12-18', end: '2026-12-27', type: 'trip',       wie: 'stijn',   title: 'Skireis St. Anton', icon: '⛷️', who: 'Stijn, Robbe & Lore' },
   { start: '2026-12-27', end: '2027-01-03', type: 'trip',       wie: 'marijke', title: 'Malta – St Paul\'s Bay', icon: '🏝️', who: 'Marijke' },

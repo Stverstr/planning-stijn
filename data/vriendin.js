@@ -51,6 +51,8 @@ const VRIENDIN = {
     {start:'2027-01-15', end:'2027-01-17', part:null,   label:'Weekend gewisseld'},
     {start:'2027-01-22', end:'2027-01-22', part:'pm',   label:'Wissel terug'},
     {start:'2027-01-23', end:'2027-01-24', part:'full', label:'Wissel terug'},
+    // 9 nov 2026: vakantie in Cadzand, de kinderen zijn de hele week bij Marijke.
+    {start:'2027-08-09', end:'2027-08-16', part:'full', label:'🏖️ Vakantie Cadzand'},
   ],
 
   dayInfo(date){

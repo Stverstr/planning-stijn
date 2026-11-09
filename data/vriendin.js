@@ -46,6 +46,11 @@ const VRIENDIN = {
   // part: 'full' | 'am' | 'pm' | null
   exceptions: [
     // voorbeeld: {start:'2026-12-24', end:'2026-12-25', part:'full', label:'🎄 Kerst bij Marijke'},
+    // 9 nov 2026: Marijke wisselt weekend 15–17 jan 2027 met 22–24 jan. Zo is ze vrij in hetzelfde weekend
+    // dat Robbe & Lore bij Marlies zijn (wissel in regeling.js) → samen vrij 15–17 jan.
+    {start:'2027-01-15', end:'2027-01-17', part:null,   label:'Weekend gewisseld'},
+    {start:'2027-01-22', end:'2027-01-22', part:'pm',   label:'Wissel terug'},
+    {start:'2027-01-23', end:'2027-01-24', part:'full', label:'Wissel terug'},
   ],
 
   dayInfo(date){

@@ -37,7 +37,7 @@ const EVENTS = [
   { start: '2026-11-12', end: '2026-11-12', type: 'avond',      wie: 'samen',   title: 'Belgian Cats – Zweden', icon: '🏀', who: 'Stijn & Marijke', time: '20:30', note: 'Charleroi' },
   { start: '2026-11-13', end: '2026-11-13', type: 'avond',      wie: 'stijn',   title: 'Etentje met de Bellem boys', icon: '🍽️', who: 'Stijn', note: 'Aalter' },
   { start: '2026-11-13', end: '2026-11-13', type: 'avond',      wie: 'marijke', title: 'Etentje op school', icon: '🍽️', who: 'Marijke' },
-  { start: '2026-11-14', end: '2026-11-14', type: 'weekend',    wie: 'samen',   title: 'Baroudeurs-tocht', icon: '🚴', who: 'Stijn & Marijke', note: 'fietstocht Affligem/Liedekerke met Michiel & Isabelle, daarna De Heeren van Liedekerke; slapen in Ursel' },
+  { start: '2026-11-14', end: '2026-11-14', type: 'weekend',    wie: 'samen',   title: 'Samen snoezen bij Stijn', icon: '🛋️', who: 'Stijn & Marijke', note: 'de hele dag; Baroudeurs-tocht gaat niet door' },
   { start: '2026-11-17', end: '2026-11-17', type: 'werk',       wie: 'stijn',   title: 'Myreas AI-training + BBQ', icon: '💼', who: 'Stijn', time: '16:00', note: 'tot 22:00 · Marktstraat 62, Lennik' },
   { start: '2026-11-17', end: '2026-11-17', type: 'avond',      wie: 'samen',   title: 'Nachtzoentje', icon: '😘', who: 'Stijn & Marijke', voorlopig: true },
   { start: '2026-11-18', end: '2026-11-20', type: 'werk',       wie: 'marijke', title: 'Directie-3-daagse', icon: '💼', who: 'Marijke', note: 'congres · Vayamundo, Oostende · tot vr 20 nov 12:30' },

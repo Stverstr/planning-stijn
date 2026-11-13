@@ -44,7 +44,7 @@ const EVENTS = [
   { start: '2026-11-20', end: '2026-11-20', type: 'overig',     wie: 'samen',   title: 'Lunchdate', icon: '🥂', who: 'Stijn & Marijke', time: '13:00', voorlopig: true },
   { start: '2026-11-21', end: '2026-11-21', type: 'avond',      wie: 'marijke', title: 'Etentje Les Plouques', icon: '🍽️', who: 'Marijke' },
   { start: '2026-11-26', end: '2026-11-26', type: 'avond',      wie: 'samen',   title: 'Comedyavond Vierhoek', icon: '🎤', who: 'Stijn & Marijke', time: '20:00', voorlopig: true },
-  { start: '2026-11-29', end: '2026-11-29', type: 'overig',     wie: 'samen',   title: 'Activiteit verjaardag pa', icon: '🎂', who: 'Stijn & Marijke', time: '16:00', voorlopig: true },
+  { start: '2026-11-29', end: '2026-11-29', type: 'overig',     wie: 'marijke', title: 'Activiteit verjaardag pa', icon: '🎂', who: 'Marijke', time: '16:00', voorlopig: true },
   { start: '2026-12-03', end: '2026-12-03', type: 'avond',      wie: 'marijke', title: 'Etentje Arca', icon: '🍽️', who: 'Marijke', time: '19:00' },
   { start: '2026-12-05', end: '2026-12-05', type: 'avond',      wie: 'marijke', title: 'Fuif Laurien', icon: '🎉', who: 'Marijke', time: '21:00', note: 'Brussel' },
   { start: '2026-12-10', end: '2026-12-10', type: 'werk',       wie: 'marijke', title: 'PV + ouderraad', icon: '💼', who: 'Marijke', time: '19:00', note: 'tot 21:00 · Basisschool De Brug' },
